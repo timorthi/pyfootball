@@ -39,31 +39,41 @@ class Football(object):
     def get_competition(self, season=None):
         pass
 
-    def get_team(self, id):
+    def get_team(self, team_id):
         """ Given an ID, returns a Team object for the team associated with
             the ID.
 
             Arguments:
-            id -- The team ID.
+            team_id -- The team ID.
 
             Returns:
-            Team - The team object.
+            Team - The Team object.
         """
-        endpoint = endpoints.TEAM.format(id)
+        endpoint = endpoints.TEAM.format(team_id)
         r = requests.get(endpoint, headers=globals.headers)
         self._update_previous_response(r, endpoint)
         r.raise_for_status()
-        return Team(data=r.json(), id=id)
+        return Team(data=r.json(), team_id=team_id)
 
-    def search_teams(team_name):
+    def search_teams(self, team_name):
         """ Given a team name, queries the database for matches and returns
-            the number of matches along with the Team object(s) of the matches,
-            if any.
+            a list of the Team object(s) of the matches, if any.
 
             Arguments:
             team_name -- The partial or full team name.
 
             Returns:
-
+            None - If there are no matches, returns nothing.
+            Team[] - A list of Team objects corresponding to successful matches
         """
-        pass
+        name = team_name.replace(" ", "%20")
+        endpoint = endpoints.TEAM.format('?name='+name)
+        r = requests.get(endpoint, headers=globals.headers)
+        self._update_previous_response(r, endpoint)
+        r.raise_for_status()
+
+        data = r.json()
+        if data['count'] is 0:
+            return None
+        else:
+            return data['teams']

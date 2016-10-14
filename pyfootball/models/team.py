@@ -1,7 +1,7 @@
 import traceback
 
 class Team(object):
-    def __init__(self, data, id):
+    def __init__(self, data, team_id):
         """ Takes a dict converted from the JSON response by the API and wraps
             the team data with an object.
 
@@ -16,7 +16,7 @@ class Team(object):
             self.short_name = data['shortName']
             self.market_value = data['squadMarketValue']
             self.crest_url = data['crestUrl']
-            self.id = id
+            self.id = team_id
         except KeyError:
             traceback.print_exc()
 
