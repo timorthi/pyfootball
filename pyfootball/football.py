@@ -8,8 +8,8 @@ from .models.team import Team
 class Football(object):
     def __init__(self, api_key):
         """ Create a Football instance that serves as a driver for this
-            API wrapper. Sends a test request to ensure validity of API key.
-            If this check fails, an HTTPError exception is raised.
+            library. Checks for validity of the API key by sending a test
+            request. If this check fails, an HTTPError exception is raised.
 
             Arguments:
             api_key -- The user's football-data.org API key/token.
