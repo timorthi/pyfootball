@@ -1,4 +1,10 @@
 import traceback
+import requests
+
+from pyfootball import endpoints
+from pyfootball import globals
+from .player import Player
+
 
 class Team(object):
     def __init__(self, data, team_id):
@@ -7,6 +13,7 @@ class Team(object):
 
             Keyword arguments:
             data -- A python dict converted from JSON containing the team data.
+            team_id -- The team ID.
         """
         try:
             self._fixtures_ep = data['_links']['fixtures']['href']
@@ -24,4 +31,18 @@ class Team(object):
         pass
 
     def get_players(self):
-        pass
+        """ Return a list of Player objects representing players on the current
+            team.
+
+            Returns:
+            players_list -- List containing Player objects
+        """
+        r = requests.get(self._players_ep, headers=globals.headers)
+        #self._update_previous_response(r, endpoint)
+        r.raise_for_status()
+
+        data = r.json()
+        player_list = []
+        for player in data['players']:
+            player_list.append(Player(player))
+        return player_list
