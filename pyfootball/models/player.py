@@ -3,6 +3,13 @@ import traceback
 
 class Player():
     def __init__(self, data):
+        """ Takes a dict converted from the JSON response by the API and wraps
+            the player data within an object.
+
+            Keyword arguments:
+            data -- A python dict converted from JSON containing the player
+                    data.
+        """
         try:
             self.name = data['name']
             self.position = data['position']
