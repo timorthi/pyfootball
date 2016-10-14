@@ -19,22 +19,18 @@ class Football(object):
         endpoint = endpoints.ALL_COMPETITIONS
         globals.headers = {'X-Auth-Token': api_key}
         r = requests.get(endpoint, headers=globals.headers)
-        self._update_previous_response(r, endpoint)
+        globals.update_prev_response(r, endpoint)
         r.raise_for_status()
         globals.api_key = api_key
 
-    def _update_previous_response(self, r, endpoint):
-        """ Sets the prev_response attribute to contain a dict that includes
-            the response status code and headers of the most recent HTTP
-            request.
+    def get_prev_response(self):
+        """ Returns information about the most recent response.
 
-            Arguments:
-            r -- The response object (of the latest HTTP request).
-            endpoint -- The endpoint used (in the latest HTTP request).
+            Returns:
+            prev_response -- A CaseInsensitiveDict containing response headers,
+                             status code, and endpoint.
         """
-        self.prev_response = r.headers
-        self.prev_response['Status-Code'] = r.status_code
-        self.prev_response['Endpoint'] = endpoint
+        return globals.prev_response
 
     def get_competition(self, season=None):
         pass
@@ -51,7 +47,7 @@ class Football(object):
         """
         endpoint = endpoints.TEAM.format(team_id)
         r = requests.get(endpoint, headers=globals.headers)
-        self._update_previous_response(r, endpoint)
+        globals.update_prev_response(r, endpoint)
         r.raise_for_status()
         return Team(data=r.json(), team_id=team_id)
 
@@ -69,7 +65,7 @@ class Football(object):
         name = team_name.replace(" ", "%20")
         endpoint = endpoints.TEAM.format('?name='+name)
         r = requests.get(endpoint, headers=globals.headers)
-        self._update_previous_response(r, endpoint)
+        globals.update_prev_response(r, endpoint)
         r.raise_for_status()
 
         data = r.json()

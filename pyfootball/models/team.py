@@ -38,7 +38,7 @@ class Team(object):
             players_list -- List containing Player objects
         """
         r = requests.get(self._players_ep, headers=globals.headers)
-        #self._update_previous_response(r, endpoint)
+        globals.update_prev_response(r, self._players_ep)
         r.raise_for_status()
 
         data = r.json()
