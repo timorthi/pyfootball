@@ -44,7 +44,7 @@ class Football(object):
             the ID.
 
             Arguments:
-            team_id -- The team ID.
+            team_id -- The team ID. Can be a string or an integer.
 
             Returns:
             Team - The Team object.
@@ -57,14 +57,14 @@ class Football(object):
 
     def search_teams(self, team_name):
         """ Given a team name, queries the database for matches and returns
-            a list of the Team object(s) of the matches, if any.
+            key-value pairs of their team IDs and team names.
 
             Arguments:
             team_name -- The partial or full team name.
 
             Returns:
-            None - If there are no matches, returns nothing.
-            Team[] - A list of Team objects corresponding to successful matches
+            matches -- A dict with team ID as keys and team name as values.
+            None -- If no matches are found for the given team_name.
         """
         name = team_name.replace(" ", "%20")
         endpoint = endpoints.TEAM.format('?name='+name)
@@ -76,4 +76,7 @@ class Football(object):
         if data['count'] is 0:
             return None
         else:
-            return data['teams']
+            matches = {}
+            for team in data['teams']:
+                matches[team['id']] = team['name']
+            return matches
