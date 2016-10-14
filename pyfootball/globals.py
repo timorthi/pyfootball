@@ -16,5 +16,3 @@ def update_prev_response(r, endpoint):
     prev_response = r.headers
     prev_response['Status-Code'] = r.status_code
     prev_response['Endpoint'] = endpoint
-
-    return prev_response
