@@ -4,6 +4,7 @@ import requests
 from pyfootball import endpoints
 from pyfootball import globals
 from .player import Player
+from .fixture import Fixture
 
 
 class Team(object):
@@ -28,14 +29,28 @@ class Team(object):
             traceback.print_exc()
 
     def get_fixtures(self):
-        pass
+        """ Return a list of Fixture objects representing this season's
+            fixtures for the current team.
+
+            Returns:
+            fixture_list -- List containing Fixture objects
+        """
+        r = requests.get(self._fixtures_ep, headers=globals.headers)
+        globals.update_prev_response(r, self._players_ep)
+        r.raise_for_status()
+
+        data = r.json()
+        fixture_list = []
+        for fixture in data['fixtures']:
+            fixture_list.append(Fixture(fixture))
+        return fixture_list
 
     def get_players(self):
         """ Return a list of Player objects representing players on the current
             team.
 
             Returns:
-            players_list -- List containing Player objects
+            player_list -- List containing Player objects
         """
         r = requests.get(self._players_ep, headers=globals.headers)
         globals.update_prev_response(r, self._players_ep)
