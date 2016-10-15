@@ -151,6 +151,27 @@ class Football(object):
             team_list.append(Team(tm))
         return team_list
 
+    def get_comp_fixtures(self, comp_id):
+        """ Given an ID, returns a list of Fixture objects associated with the
+            given competition.
+
+            Arguments:
+            comp_id -- The competition ID. Can be a string or an integer.
+
+            Returns:
+            fixture_list -- List of Fixture objects.
+        """
+        endpoint = endpoints['comp_fixtures'].format(comp_id)
+        r = requests.get(endpoint, headers=globals.headers)
+        globals.update_prev_response(r, endpoint)
+        r.raise_for_status()
+
+        data = r.json()
+        fixture_list = []
+        for fixture in data['fixtures']:
+            fixture_list.append(Fixture(fixture))
+        return fixture_list
+
     def search_teams(self, team_name):
         """ Given a team name, queries the database for matches and returns
             key-value pairs of their team IDs and team names.
