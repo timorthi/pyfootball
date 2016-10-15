@@ -71,6 +71,25 @@ class Football(object):
 
         return Fixture(r.json()['fixture'])
 
+    def get_all_fixtures(self):
+        """ Returns a list of all Fixture objects in the specified time frame.
+            Defaults to the next 7 days or "n7". TODO: Include timeFrameStart
+            and timeFrameEnd.
+
+            Returns:
+            fixture_list -- List of Fixture objects.
+        """
+        endpoint = endpoints['all_fixtures']
+        r = requests.get(endpoint, headers=globals.headers)
+        globals.update_prev_response(r, endpoint)
+        r.raise_for_status()
+
+        data = r.json()
+        fixture_list = []
+        for fixture in data['fixtures']:
+            fixture_list.append(Fixture(fixture))
+        return fixture_list
+
     def get_team(self, team_id):
         """ Given an ID, returns a Team object for the team associated with
             the ID.
