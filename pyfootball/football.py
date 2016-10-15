@@ -5,6 +5,7 @@ from . import globals
 from .globals import endpoints
 from .models.competition import Competition
 from .models.team import Team
+from .models.fixture import Fixture
 from .models.leaguetable import LeagueTable
 from .models.player import Player
 
@@ -88,6 +89,27 @@ class Football(object):
         for player in data['players']:
             player_list.append(Player(player))
         return player_list
+
+    def get_team_fixtures(self, team_id):
+        """ Given a team ID, returns a list of Fixture objects associated
+            with the team.
+
+            Arguments:
+            team_id -- The team ID. Can be a string or an integer.
+
+            Returns:
+            fixture_list -- The Fixtures in a Team.
+        """
+        endpoint = endpoints['team_fixtures'].format(team_id)
+        r = requests.get(endpoint, headers=globals.headers)
+        globals.update_prev_response(r, endpoint)
+        r.raise_for_status()
+
+        data = r.json()
+        fixture_list = []
+        for fixture in data['fixtures']:
+            fixture_list.append(Fixture(fixture))
+        return fixture_list
 
     def get_competition_teams(self, comp_id):
         """ Given an ID, returns a list of Team objects associated with the

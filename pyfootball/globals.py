@@ -6,6 +6,7 @@ endpoints = {
     'comp_teams': 'http://api.football-data.org/v1/competitions/{}/teams',
     'team': 'http://api.football-data.org/v1/teams/{}',
     'team_players': 'http://api.football-data.org/v1/teams/{}/players',
+    'team_fixtures': 'http://api.football-data.org/v1/teams/{}/fixtures/',
     'league_table':
         'http://api.football-data.org/v1/competitions/{}/leagueTable'
 }
