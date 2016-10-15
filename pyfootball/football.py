@@ -1,8 +1,8 @@
 import requests
 import json
 
-from . import endpoints
 from . import globals
+from .globals import endpoints
 from .models.competition import Competition
 from .models.team import Team
 
@@ -16,7 +16,7 @@ class Football(object):
             Arguments:
             api_key -- The user's football-data.org API key/token.
         """
-        endpoint = endpoints.ALL_COMPETITIONS
+        endpoint = endpoints['all_competitions']
         globals.headers = {'X-Auth-Token': api_key}
         r = requests.get(endpoint, headers=globals.headers)
         globals.update_prev_response(r, endpoint)
@@ -32,8 +32,23 @@ class Football(object):
         """
         return globals.prev_response
 
-    def get_competition(self, season=None):
-        pass
+    def get_competitions(self):
+        """ Returns a list of Competition objects representing the current
+            season's competitions.
+
+            Returns:
+            comp_list -- List of Competition objects
+        """
+        endpoint = endpoints['all_competitions']
+        r = requests.get(endpoint, headers=globals.headers)
+        globals.update_prev_response(r, endpoint)
+        r.raise_for_status()
+
+        data = r.json()
+        comp_list = []
+        for comp in data:
+            comp_list.append(Competition(comp))
+        return comp_list
 
     def get_team(self, team_id):
         """ Given an ID, returns a Team object for the team associated with
@@ -45,7 +60,7 @@ class Football(object):
             Returns:
             Team - The Team object.
         """
-        endpoint = endpoints.TEAM.format(team_id)
+        endpoint = endpoints['team'].format(team_id)
         r = requests.get(endpoint, headers=globals.headers)
         globals.update_prev_response(r, endpoint)
         r.raise_for_status()
@@ -63,7 +78,7 @@ class Football(object):
             None -- If no matches are found for the given team_name.
         """
         name = team_name.replace(" ", "%20")
-        endpoint = endpoints.TEAM.format('?name='+name)
+        endpoint = endpoints['team'].format('?name='+name)
         r = requests.get(endpoint, headers=globals.headers)
         globals.update_prev_response(r, endpoint)
         r.raise_for_status()

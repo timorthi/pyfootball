@@ -1,6 +1,10 @@
 api_key = ""
 headers = {}
 prev_response = {}
+endpoints = {
+    'all_competitions': 'http://api.football-data.org/v1/competitions/',
+    'team': 'http://api.football-data.org/v1/teams/{0}'
+}
 
 
 def update_prev_response(r, endpoint):

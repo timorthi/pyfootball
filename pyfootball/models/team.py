@@ -1,7 +1,6 @@
 import traceback
 import requests
 
-from pyfootball import endpoints
 from pyfootball import globals
 from .player import Player
 from .fixture import Fixture
@@ -36,7 +35,7 @@ class Team(object):
             fixture_list -- List containing Fixture objects
         """
         r = requests.get(self._fixtures_ep, headers=globals.headers)
-        globals.update_prev_response(r, self._players_ep)
+        globals.update_prev_response(r, self._fixtures_ep)
         r.raise_for_status()
 
         data = r.json()
