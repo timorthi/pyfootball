@@ -66,6 +66,27 @@ class Football(object):
         r.raise_for_status()
         return Team(r.json())
 
+    def get_competition_teams(self, comp_id):
+        """ Given an ID, returns a list of Team objects associated with the
+            given competition.
+
+            Arguments:
+            comp_id -- The team ID. Can be a string or an integer.
+
+            Returns:
+            team_list - List of Team objects.
+        """
+        endpoint = endpoints['comp_teams'].format(comp_id)
+        r = requests.get(endpoint, headers=globals.headers)
+        globals.update_prev_response(r, endpoint)
+        r.raise_for_status()
+
+        data = r.json()
+        team_list = []
+        for tm in data['teams']:
+            team_list.append(Team(tm))
+        return team_list
+
     def search_teams(self, team_name):
         """ Given a team name, queries the database for matches and returns
             key-value pairs of their team IDs and team names.

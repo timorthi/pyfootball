@@ -3,7 +3,8 @@ headers = {}
 prev_response = {}
 endpoints = {
     'all_competitions': 'http://api.football-data.org/v1/competitions/',
-    'team': 'http://api.football-data.org/v1/teams/{0}'
+    'comp_teams': 'http://api.football-data.org/v1/competitions/{}/teams',
+    'team': 'http://api.football-data.org/v1/teams/{}'
 }
 
 
