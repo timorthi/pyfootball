@@ -3,6 +3,7 @@ import requests
 
 from pyfootball import globals
 from .team import Team
+from .fixture import Fixture
 
 
 class Competition():
@@ -30,7 +31,21 @@ class Competition():
             traceback.print_exc()
 
     def get_fixtures(self):
-        pass
+        """ Return a list of Fixture objects representing the fixtures in this
+            competition for the current season.
+
+            Returns:
+            fixture_list -- List containing Fixture objects
+        """
+        r = requests.get(self._fixtures_ep, headers=globals.headers)
+        globals.update_prev_response(r, self._fixtures_ep)
+        r.raise_for_status()
+
+        data = r.json()
+        fixture_list = []
+        for fixture in data['fixtures']:
+            fixture_list.append(Fixture(fixture))
+        return fixture_list
 
     def get_teams(self):
         """ Return a list of Team objects representing the teams in this
