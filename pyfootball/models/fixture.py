@@ -23,7 +23,7 @@ class Fixture(object):
             self.away_team_id = self._away_team_ep.split("/")[-1]
             self.competition_id = self._competition_ep.split("/")[-1]
 
-            if data['result']['goalsHomeTeam']:
+            if data['result']['goalsHomeTeam'] is not None:
                 self.result = {
                     'home_team_goals': data['result']['goalsHomeTeam'],
                     'away_team_goals': data['result']['goalsAwayTeam'],
