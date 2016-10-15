@@ -4,6 +4,7 @@ import requests
 from pyfootball import globals
 from .team import Team
 from .fixture import Fixture
+from .leaguetable import LeagueTable
 
 
 class Competition():
@@ -12,7 +13,8 @@ class Competition():
             the competition data within an object.
 
             Keyword arguments:
-            data -- A python dict converted from JSON containing the team data.
+            data -- A python dict converted from JSON containing the
+                    competition data.
         """
         try:
             self._teams_ep = data['_links']['teams']['href']
@@ -65,4 +67,8 @@ class Competition():
         return team_list
 
     def get_league_table(self):
-        pass
+        r = requests.get(self._league_table_ep, headers=globals.headers)
+        globals.update_prev_response(r, self._league_table_ep)
+        r.raise_for_status()
+
+        return LeagueTable(r.json())
