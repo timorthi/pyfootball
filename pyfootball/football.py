@@ -5,6 +5,7 @@ from . import globals
 from .globals import endpoints
 from .models.competition import Competition
 from .models.team import Team
+from .models.leaguetable import LeagueTable
 
 
 class Football(object):
@@ -58,7 +59,7 @@ class Football(object):
             team_id -- The team ID. Can be a string or an integer.
 
             Returns:
-            Team - The Team object.
+            Team -- The Team object.
         """
         endpoint = endpoints['team'].format(team_id)
         r = requests.get(endpoint, headers=globals.headers)
@@ -71,10 +72,10 @@ class Football(object):
             given competition.
 
             Arguments:
-            comp_id -- The team ID. Can be a string or an integer.
+            comp_id -- The competition ID. Can be a string or an integer.
 
             Returns:
-            team_list - List of Team objects.
+            team_list -- List of Team objects.
         """
         endpoint = endpoints['comp_teams'].format(comp_id)
         r = requests.get(endpoint, headers=globals.headers)
@@ -112,3 +113,20 @@ class Football(object):
             for team in data['teams']:
                 matches[team['id']] = team['name']
             return matches
+
+    def get_league_table(self, comp_id):
+        """ Given a competition ID, returns a LeagueTable object for the
+            league table associated with the competition.
+
+            Arguments:
+            comp_id -- The team ID. Can be a string or an integer.
+
+            Returns:
+            LeagueTable -- A LeagueTable object.
+        """
+        endpoint = endpoints['league_table'].format(comp_id)
+        r = requests.get(endpoint, headers=globals.headers)
+        globals.update_prev_response(r, endpoint)
+        r.raise_for_status()
+
+        return LeagueTable(r.json())

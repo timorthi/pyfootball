@@ -4,7 +4,9 @@ prev_response = {}
 endpoints = {
     'all_competitions': 'http://api.football-data.org/v1/competitions/',
     'comp_teams': 'http://api.football-data.org/v1/competitions/{}/teams',
-    'team': 'http://api.football-data.org/v1/teams/{}'
+    'team': 'http://api.football-data.org/v1/teams/{}',
+    'league_table':
+        'http://api.football-data.org/v1/competitions/{}/leagueTable'
 }
 
 
