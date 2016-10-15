@@ -4,7 +4,7 @@ import traceback
 class LeagueTable(object):
     def __init__(self, data):
         """ Takes a dict converted from the JSON response by the API and wraps
-            the league table data with an object.
+            the league table data within an object.
 
             Arguments:
             data -- A python dict converted from JSON containing the league

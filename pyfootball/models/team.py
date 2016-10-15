@@ -9,7 +9,7 @@ from .fixture import Fixture
 class Team(object):
     def __init__(self, data):
         """ Takes a dict converted from the JSON response by the API and wraps
-            the team data with an object.
+            the team data within an object.
 
             Keyword arguments:
             data -- A python dict converted from JSON containing the team data.
