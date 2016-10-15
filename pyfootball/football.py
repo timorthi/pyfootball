@@ -53,6 +53,24 @@ class Football(object):
             comp_list.append(Competition(comp))
         return comp_list
 
+    def get_fixture(self, fixture_id):
+        """ Returns a Fixture object associated with the given ID. The response
+            includes a head-to-head between teams; this will be implemented
+            in the near future.
+
+            Arguments:
+            fixture_id -- The fixture ID. Can be a string or an integer.
+
+            Returns:
+            Fixture -- The Fixture object.
+        """
+        endpoint = endpoints['fixture'].format(fixture_id)
+        r = requests.get(endpoint, headers=globals.headers)
+        globals.update_prev_response(r, endpoint)
+        r.raise_for_status()
+
+        return Fixture(r.json()['fixture'])
+
     def get_team(self, team_id):
         """ Given an ID, returns a Team object for the team associated with
             the ID.
@@ -67,6 +85,7 @@ class Football(object):
         r = requests.get(endpoint, headers=globals.headers)
         globals.update_prev_response(r, endpoint)
         r.raise_for_status()
+
         return Team(r.json())
 
     def get_team_players(self, team_id):
