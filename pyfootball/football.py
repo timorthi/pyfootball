@@ -32,7 +32,7 @@ class Football(object):
         """
         return globals.prev_response
 
-    def get_competitions(self):
+    def get_all_competitions(self):
         """ Returns a list of Competition objects representing the current
             season's competitions.
 
