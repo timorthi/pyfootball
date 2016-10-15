@@ -64,7 +64,7 @@ class Football(object):
         r = requests.get(endpoint, headers=globals.headers)
         globals.update_prev_response(r, endpoint)
         r.raise_for_status()
-        return Team(data=r.json(), team_id=team_id)
+        return Team(r.json())
 
     def search_teams(self, team_name):
         """ Given a team name, queries the database for matches and returns

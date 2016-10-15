@@ -7,23 +7,22 @@ from .fixture import Fixture
 
 
 class Team(object):
-    def __init__(self, data, team_id):
+    def __init__(self, data):
         """ Takes a dict converted from the JSON response by the API and wraps
             the team data with an object.
 
             Keyword arguments:
             data -- A python dict converted from JSON containing the team data.
-            team_id -- The team ID.
         """
         try:
             self._fixtures_ep = data['_links']['fixtures']['href']
             self._players_ep = data['_links']['players']['href']
+            self.id = data['_links']['self']['href'].split("/")[-1]
             self.name = data['name']
             self.code = data['code']
             self.short_name = data['shortName']
             self.market_value = data['squadMarketValue']
             self.crest_url = data['crestUrl']
-            self.id = team_id
         except KeyError:
             traceback.print_exc()
 
