@@ -1,15 +1,17 @@
 api_key = ""
 headers = {}
 prev_response = {}
+
+_base = 'http://api.football-data.org'
 endpoints = {
-    'fixture': 'http://api.football-data.org/v1/fixtures/{}',
-    'all_competitions': 'http://api.football-data.org/v1/competitions/',
-    'comp_teams': 'http://api.football-data.org/v1/competitions/{}/teams',
-    'team': 'http://api.football-data.org/v1/teams/{}',
-    'team_players': 'http://api.football-data.org/v1/teams/{}/players',
-    'team_fixtures': 'http://api.football-data.org/v1/teams/{}/fixtures/',
-    'league_table':
-        'http://api.football-data.org/v1/competitions/{}/leagueTable'
+    'fixture': _base + '/v1/fixtures/{}',
+    'all_competitions': _base + '/v1/competitions/',
+    'comp_teams': _base + '/v1/competitions/{}/teams',
+    'comp_fixtures': _base + '/v1/competitions/{}/fixtures',
+    'team': _base + '/v1/teams/{}',
+    'team_players': _base + '/v1/teams/{}/players',
+    'team_fixtures': _base + '/v1/teams/{}/fixtures/',
+    'league_table': _base + '/v1/competitions/{}/leagueTable'
 }
 
 
