@@ -1,5 +1,6 @@
 import traceback
 
+
 class Fixture(object):
     def __init__(self, data):
         """ Takes a dict converted from the JSON response by the API and wraps
@@ -8,9 +9,6 @@ class Fixture(object):
             Keyword arguments:
             data -- A python dict converted from JSON containing the fixture
                     data.
-            type -- A string indicating the response type based on which
-                    endpoint is used to get the fixture(s). Defaults to None
-                    which represents the fixtures of a Team.
         """
         try:
             self._home_team_ep = data['_links']['homeTeam']['href']
