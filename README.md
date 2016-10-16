@@ -5,14 +5,23 @@ pyfootball is a client library for [football-data.org](http://api.football-data.
 
 You can familiarize yourself with pyfootball's API with the [documentation](https://pyfootball.readthedocs.io).
 
-## Installation
-To Be Updated
+#Requirements
+* A valid API key for football-data. You can request for one [here](http://api.football-data.org/register).
+* Python 3.5+
+* The ``requests`` library. pip should handle this for you when installing pyfootball.
 
-## Quickstart
-To Be Updated
+## Installation
+    pip install pyfootball
+
+## Example Usage
+    >>> import pyfootball
+    >>> f = pyfootball.Football('your_api_key')
+    >>> bayern = f.get_team(5)
+    >>> bayern.market_value
+    582,225,000 €
 
 ## Support
-If you are having issues, please let us know by [creating an issue](https://github.com/xozzo/pyfootball/issues/new) or tweeting at me [@timorthi](https://www.twitter.com/timorthi).
+If you encounter any bugs, please let me know by [creating an issue](https://github.com/xozzo/pyfootball/issues/new) or tweeting at me [@timorthi](https://www.twitter.com/timorthi).
 
 ## License
 The project is licensed under the MIT license.
