@@ -1,4 +1,5 @@
 # pyfootball
+[![Documentation Status](https://readthedocs.org/projects/pyfootball/badge/?version=latest)](http://pyfootball.readthedocs.io/en/latest/?badge=latest)
 pyfootball is a client library for [football-data.org](http://api.football-data.org/index) written in Python.
 
 You can familiarize yourself with pyfootball's API with the [documentation](https://pyfootball.readthedocs.io).
