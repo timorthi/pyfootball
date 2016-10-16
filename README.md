@@ -1,16 +1,16 @@
 # pyfootball
-A Python API wrapper for football-data.org's endpoints.  
+pyfootball is a client library for [football-data.org](http://api.football-data.org/index) written in Python.
 
-[Documentation](https://pyfootball.readthedocs.io)
+You can familiarize yourself with pyfootball's API with the [documentation](https://pyfootball.readthedocs.io).
 
-# Installation
+## Installation
 To Be Updated
 
-# Quickstart
+## Quickstart
 To Be Updated
 
-# Support
+## Support
 If you are having issues, please let us know by [creating an issue](https://github.com/xozzo/pyfootball/issues/new) or tweeting at me [@timorthi](https://www.twitter.com/timorthi).
 
-# License
+## License
 The project is licensed under the MIT license.
