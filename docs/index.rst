@@ -47,3 +47,8 @@ Example Usage
 
     pages/faq
     pages/changelog
+
+
+License
+---------
+The project is licensed under the MIT license.
