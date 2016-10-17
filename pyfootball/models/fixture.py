@@ -1,20 +1,20 @@
 import traceback
+from datetime import datetime
 
 
 class Fixture(object):
     def __init__(self, data):
-        """ Takes a dict converted from the JSON response by the API and wraps
-            the fixture data within an object.
+        """Takes a dict converted from the JSON response by the API and wraps
+        the fixture data within an object.
 
-            Keyword arguments:
-            data -- A python dict converted from JSON containing the fixture
-                    data.
+        :param data: The fixture data from the API's response.
+        :type data: dict
         """
         try:
             self._home_team_ep = data['_links']['homeTeam']['href']
             self._away_team_ep = data['_links']['awayTeam']['href']
             self._competition_ep = data['_links']['competition']['href']
-            self.date = data['date']
+            self.date = datetime.strptime(data['date'], '%Y-%m-%dT%H:%M:%SZ')
             self.status = data['status']
             self.matchday = data['matchday']
             self.home_team = data['homeTeamName']
