@@ -1,5 +1,6 @@
 import traceback
 import requests
+from datetime import datetime
 
 from pyfootball import globals
 from .team import Team
@@ -28,7 +29,8 @@ class Competition():
             self.number_of_matchdays = data['numberOfMatchdays']
             self.number_of_teams = data['numberOfTeams']
             self.number_of_games = data['numberOfGames']
-            self.last_updated = data['lastUpdated']
+            self.last_updated = datetime.strptime(data['lastUpdated'],
+                                                  '%Y-%m-%dT%H:%M:%SZ')
         except KeyError:
             traceback.print_exc()
 

@@ -1,4 +1,5 @@
 import traceback
+from datetime import datetime
 
 
 class Fixture(object):
@@ -14,7 +15,7 @@ class Fixture(object):
             self._home_team_ep = data['_links']['homeTeam']['href']
             self._away_team_ep = data['_links']['awayTeam']['href']
             self._competition_ep = data['_links']['competition']['href']
-            self.date = data['date']
+            self.date = datetime.strptime(data['date'], '%Y-%m-%dT%H:%M:%SZ')
             self.status = data['status']
             self.matchday = data['matchday']
             self.home_team = data['homeTeamName']

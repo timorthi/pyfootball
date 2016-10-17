@@ -55,7 +55,7 @@ Competition
       - The number of games in this competition.
 
     * - last_updated
-      - string
+      - datetime
       - The date and time at which this resource was last updated.
 
 LeagueTable
@@ -167,7 +167,7 @@ Fixture
       - Description
 
     * - date
-      - string
+      - datetime
       - The fixture date and time.
 
     * - status
@@ -265,7 +265,7 @@ Player
       - The player's kit number.
 
     * - date_of_birth
-      - string
+      - date
       - The player's date of birth.
 
     * - nationality
@@ -273,7 +273,7 @@ Player
       - The player's nationality.
 
     * - contract_until
-      - string
+      - date
       - The date of the player's contract expiry with their team.
 
     * - market_value

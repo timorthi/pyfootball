@@ -1,4 +1,5 @@
 import traceback
+from datetime import datetime
 
 
 class Player():
@@ -14,9 +15,11 @@ class Player():
             self.name = data['name']
             self.position = data['position']
             self.jersey_number = data['jerseyNumber']
-            self.date_of_birth = data['dateOfBirth']
+            self.date_of_birth = datetime.strptime(data['dateOfBirth'],
+                                                   '%Y-%m-%d').date()
             self.nationality = data['nationality']
-            self.contract_until = data['contractUntil']
+            self.contract_until = datetime.strptime(data['contractUntil'],
+                                                    '%Y-%m-%d').date()
             self.market_value = data['marketValue']
         except KeyError:
             traceback.print_exc()
