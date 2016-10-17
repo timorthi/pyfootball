@@ -6,6 +6,7 @@ _base = 'http://api.football-data.org'
 endpoints = {
     'fixture': _base + '/v1/fixtures/{}',
     'all_fixtures': _base + '/v1/fixtures/',
+    'competition': _base + '/v1/competitions/{}',
     'all_competitions': _base + '/v1/competitions/',
     'comp_teams': _base + '/v1/competitions/{}/teams',
     'comp_fixtures': _base + '/v1/competitions/{}/fixtures',

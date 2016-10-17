@@ -35,6 +35,22 @@ class Football(object):
         """
         return globals.prev_response
 
+    def get_competition(self, comp_id):
+        """ Returns a Competition object associated with the competition ID.
+
+            Arguments:
+            comp_id -- The competition ID. Can be a string or an integer.
+
+            Returns:
+            Competition -- The Competition object.
+        """
+        endpoint = endpoints['competition'].format(comp_id)
+        r = requests.get(endpoint, headers=globals.headers)
+        globals.update_prev_response(r, endpoint)
+        r.raise_for_status()
+
+        return Competition(r.json())
+
     def get_all_competitions(self):
         """ Returns a list of Competition objects representing the current
             season's competitions.
