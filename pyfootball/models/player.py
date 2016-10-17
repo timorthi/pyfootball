@@ -4,12 +4,11 @@ from datetime import datetime
 
 class Player():
     def __init__(self, data):
-        """ Takes a dict converted from the JSON response by the API and wraps
-            the player data within an object.
+        """Takes a dict converted from the JSON response by the API and wraps
+        the player data within an object.
 
-            Keyword arguments:
-            data -- A python dict converted from JSON containing the player
-                    data.
+        :param data: The player data from the API's response.
+        :type data: dict
         """
         try:
             self.name = data['name']

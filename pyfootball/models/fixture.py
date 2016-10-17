@@ -4,12 +4,11 @@ from datetime import datetime
 
 class Fixture(object):
     def __init__(self, data):
-        """ Takes a dict converted from the JSON response by the API and wraps
-            the fixture data within an object.
+        """Takes a dict converted from the JSON response by the API and wraps
+        the fixture data within an object.
 
-            Keyword arguments:
-            data -- A python dict converted from JSON containing the fixture
-                    data.
+        :param data: The fixture data from the API's response.
+        :type data: dict
         """
         try:
             self._home_team_ep = data['_links']['homeTeam']['href']

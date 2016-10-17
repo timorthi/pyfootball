@@ -3,12 +3,11 @@ import traceback
 
 class LeagueTable(object):
     def __init__(self, data):
-        """ Takes a dict converted from the JSON response by the API and wraps
-            the league table data within an object.
+        """Takes a dict converted from the JSON response by the API and wraps
+        the league table data within an object.
 
-            Arguments:
-            data -- A python dict converted from JSON containing the league
-                    table data.
+        :param data: The league table data from the API's response.
+        :type data: dict
         """
         try:
             self._competition_ep = data['_links']['competition']['href']
@@ -26,8 +25,8 @@ class LeagueTable(object):
 
     class Standing(object):
         def __init__(self, data):
-            """ A private LeagueTable class that stores information about
-                a given position in the table.
+            """A private LeagueTable class that stores information about
+            a given position in the table.
             """
             try:
                 self.position = data['position']

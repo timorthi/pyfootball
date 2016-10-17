@@ -8,11 +8,11 @@ from .fixture import Fixture
 
 class Team(object):
     def __init__(self, data):
-        """ Takes a dict converted from the JSON response by the API and wraps
-            the team data within an object.
+        """Takes a dict converted from the JSON response by the API and wraps
+        the team data within an object.
 
-            Keyword arguments:
-            data -- A python dict converted from JSON containing the team data.
+        :param data: The team data from the API's response.
+        :type data: dict
         """
         try:
             self._fixtures_ep = data['_links']['fixtures']['href']
@@ -27,11 +27,12 @@ class Team(object):
             traceback.print_exc()
 
     def get_fixtures(self):
-        """ Return a list of Fixture objects representing this season's
-            fixtures for the current team.
+        """Return a list of Fixture objects representing this season's
+        fixtures for the current team.
 
-            Returns:
-            fixture_list -- List containing Fixture objects
+        Sends one request to api.football-data.org.
+
+        :returns: fixture_list: A list of Fixture objects.
         """
         r = requests.get(self._fixtures_ep, headers=globals.headers)
         globals.update_prev_response(r, self._fixtures_ep)
@@ -44,11 +45,12 @@ class Team(object):
         return fixture_list
 
     def get_players(self):
-        """ Return a list of Player objects representing players on the current
-            team.
+        """Return a list of Player objects representing players on the current
+        team.
 
-            Returns:
-            player_list -- List containing Player objects
+        Sends one request to api.football-data.org.
+
+        :returns: player_list: A list of Player objects.
         """
         r = requests.get(self._players_ep, headers=globals.headers)
         globals.update_prev_response(r, self._players_ep)
