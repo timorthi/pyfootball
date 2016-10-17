@@ -1,10 +1,17 @@
 from setuptools import setup, find_packages
+import os
 
+
+if os.path.exists('README.rst'):
+    readme_path = 'README.rst'
+else:
+    readme_path = 'README.md'
 
 setup(
     name='pyfootball',
     version='1.0.0',
     description='A client library for the football-data.org REST API',
+    long_description=open(readme_path).read(),
     url='https://github.com/xozzo/pyfootball',
     author='Timothy Ng',
     author_email='hello@timothyng.xyz',
