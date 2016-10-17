@@ -5,7 +5,7 @@ pyfootball is a client library for [football-data.org](http://api.football-data.
 
 You can familiarize yourself with pyfootball's API with the [documentation](https://pyfootball.readthedocs.io).
 
-#Requirements
+## Requirements
 * A valid API key for football-data. You can request for one [here](http://api.football-data.org/register).
 * Python 3.5+
 * The ``requests`` library. pip should handle this for you when installing pyfootball.
@@ -25,3 +25,8 @@ If you encounter any bugs, please let me know by [creating an issue](https://git
 
 ## License
 The project is licensed under the MIT license.
+
+## To Do
+* Filter support for all resources that have them.
+* Writing unit & integration tests.
+* Testing on various versions of Python.
