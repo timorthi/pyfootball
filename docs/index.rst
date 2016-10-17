@@ -46,6 +46,7 @@ Example Usage
     :caption: About
 
     pages/faq
+    pages/support
     pages/changelog
 
 

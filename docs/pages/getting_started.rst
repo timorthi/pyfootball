@@ -12,9 +12,9 @@ First, you're going to want to create a ``Football`` instance:
     >>> import pyfootball
     >>> f = pyfootball.Football('your_api_key')
 
-.. note:: Instantiating a ``Football`` object will use one request out of the 50 allowed per minute by football-data.org's API. In general, any function that begins with ``get`` will send a HTTP request to a football-data.org endpoint.
-
 If you provide an invalid API key, an HTTPError exception will be raised. 
+
+.. note:: Instantiating a ``Football`` object will use one request out of the 50 allowed per minute by football-data.org's API. You can see the full list of which functions send requests and which ones don't at :doc:`api`.
 
 The ``Football`` class serves as an entry point for the library. Now, we want to get the data of a team — for example, Manchester United — but since we don't know its ID in football-data.org's database, we're going to have to look it up:
 ::
@@ -46,4 +46,4 @@ Now that we have Manchester United's ID, we can get more information about it:
     >>> players[0].market_value
     70,000,000 €
 
-A comprehensive list of object models, their attributes and their functions are available at :doc:`data_model`.
+A comprehensive list of object models and their attributes are available at :doc:`data_model`. A full list of functions available are available at :doc:`api`.

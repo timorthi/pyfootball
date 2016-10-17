@@ -1,3 +1,5 @@
 Change Log
 ============
-Intentionally left empty for now.
+1.0.0 (2016.10.16)
+--------------------
+* Initial release! :)
