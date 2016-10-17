@@ -69,6 +69,65 @@ class Football(object):
             comp_list.append(Competition(comp))
         return comp_list
 
+    def get_league_table(self, comp_id):
+        """ Given a competition ID, returns a LeagueTable object for the
+            league table associated with the competition.
+
+            Arguments:
+            comp_id -- The team ID. Can be a string or an integer.
+
+            Returns:
+            LeagueTable -- A LeagueTable object.
+        """
+        endpoint = endpoints['league_table'].format(comp_id)
+        r = requests.get(endpoint, headers=globals.headers)
+        globals.update_prev_response(r, endpoint)
+        r.raise_for_status()
+
+        return LeagueTable(r.json())
+
+    def get_comp_fixtures(self, comp_id):
+        """ Given an ID, returns a list of Fixture objects associated with the
+            given competition.
+
+            Arguments:
+            comp_id -- The competition ID. Can be a string or an integer.
+
+            Returns:
+            fixture_list -- List of Fixture objects.
+        """
+        endpoint = endpoints['comp_fixtures'].format(comp_id)
+        r = requests.get(endpoint, headers=globals.headers)
+        globals.update_prev_response(r, endpoint)
+        r.raise_for_status()
+
+        data = r.json()
+        fixture_list = []
+        for fixture in data['fixtures']:
+            fixture_list.append(Fixture(fixture))
+        return fixture_list
+
+    def get_competition_teams(self, comp_id):
+        """ Given an ID, returns a list of Team objects associated with the
+            given competition.
+
+            Arguments:
+            comp_id -- The competition ID. Can be a string or an integer.
+
+            Returns:
+            team_list -- List of Team objects.
+        """
+        endpoint = endpoints['comp_teams'].format(comp_id)
+        r = requests.get(endpoint, headers=globals.headers)
+        globals.update_prev_response(r, endpoint)
+        r.raise_for_status()
+
+        data = r.json()
+        team_list = []
+        for tm in data['teams']:
+            team_list.append(Team(tm))
+        return team_list
+
     def get_fixture(self, fixture_id):
         """ Returns a Fixture object associated with the given ID. The response
             includes a head-to-head between teams; this will be implemented
@@ -165,48 +224,6 @@ class Football(object):
             fixture_list.append(Fixture(fixture))
         return fixture_list
 
-    def get_competition_teams(self, comp_id):
-        """ Given an ID, returns a list of Team objects associated with the
-            given competition.
-
-            Arguments:
-            comp_id -- The competition ID. Can be a string or an integer.
-
-            Returns:
-            team_list -- List of Team objects.
-        """
-        endpoint = endpoints['comp_teams'].format(comp_id)
-        r = requests.get(endpoint, headers=globals.headers)
-        globals.update_prev_response(r, endpoint)
-        r.raise_for_status()
-
-        data = r.json()
-        team_list = []
-        for tm in data['teams']:
-            team_list.append(Team(tm))
-        return team_list
-
-    def get_comp_fixtures(self, comp_id):
-        """ Given an ID, returns a list of Fixture objects associated with the
-            given competition.
-
-            Arguments:
-            comp_id -- The competition ID. Can be a string or an integer.
-
-            Returns:
-            fixture_list -- List of Fixture objects.
-        """
-        endpoint = endpoints['comp_fixtures'].format(comp_id)
-        r = requests.get(endpoint, headers=globals.headers)
-        globals.update_prev_response(r, endpoint)
-        r.raise_for_status()
-
-        data = r.json()
-        fixture_list = []
-        for fixture in data['fixtures']:
-            fixture_list.append(Fixture(fixture))
-        return fixture_list
-
     def search_teams(self, team_name):
         """ Given a team name, queries the database for matches and returns
             key-value pairs of their team IDs and team names.
@@ -232,20 +249,3 @@ class Football(object):
             for team in data['teams']:
                 matches[team['id']] = team['name']
             return matches
-
-    def get_league_table(self, comp_id):
-        """ Given a competition ID, returns a LeagueTable object for the
-            league table associated with the competition.
-
-            Arguments:
-            comp_id -- The team ID. Can be a string or an integer.
-
-            Returns:
-            LeagueTable -- A LeagueTable object.
-        """
-        endpoint = endpoints['league_table'].format(comp_id)
-        r = requests.get(endpoint, headers=globals.headers)
-        globals.update_prev_response(r, endpoint)
-        r.raise_for_status()
-
-        return LeagueTable(r.json())
