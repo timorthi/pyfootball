@@ -3,8 +3,8 @@ from setuptools import setup, find_packages
 
 setup(
     name='pyfootball',
-    version='1.0.0-alpha',
-    description='A Python API wrapper for football-data.org',
+    version='1.0.0',
+    description='A client library for the football-data.org REST API',
     url='https://github.com/xozzo/pyfootball',
     author='Timothy Ng',
     author_email='hello@timothyng.xyz',
@@ -12,7 +12,7 @@ setup(
 
     # See https://pypi.python.org/pypi?%3Aaction=list_classifiers
     classifiers=[
-        'Development Status :: 3 - Alpha',
+        'Development Status :: 5 - Production/Stable',
         'Intended Audience :: Developers',
         'Topic :: Software Development :: Libraries',
         'License :: OSI Approved :: MIT License',
