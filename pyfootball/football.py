@@ -17,6 +17,7 @@ class Football(object):
         Sends one request to api.football-data.org.
 
         :param api_key: The user's football-data.org API key
+        :type api_key: string
         """
         endpoint = endpoints['all_competitions']
         globals.headers = {'X-Auth-Token': api_key}
