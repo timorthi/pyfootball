@@ -30,7 +30,7 @@ class TestTeamAfterInit(unittest.TestCase):
             self.skipTest(TestTeamAfterInit)
 
     def tearDown(self):
-        self.player = None
+        self.team = None
 
     def test_data_types(self):
         integers = ['id']
