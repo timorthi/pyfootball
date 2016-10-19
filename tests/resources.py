@@ -57,6 +57,99 @@ PLAYERS = {
     }]
     }
 
+COMPETITION = {
+  "_links": {
+    "self": {
+      "href": "http://api.football-data.org/v1/competitions/430"
+    },
+    "teams": {
+      "href": "http://api.football-data.org/v1/competitions/430/teams"
+    },
+    "fixtures": {
+      "href": "http://api.football-data.org/v1/competitions/430/fixtures"
+    },
+    "leagueTable": {
+      "href": "http://api.football-data.org/v1/competitions/430/leagueTable"
+    }
+  },
+  "id": 430,
+  "caption": "1. Bundesliga 2016/17",
+  "league": "BL1",
+  "year": "2016",
+  "currentMatchday": 8,
+  "numberOfMatchdays": 34,
+  "numberOfTeams": 18,
+  "numberOfGames": 306,
+  "lastUpdated": "2016-10-19T07:00:05Z"
+}
+
+COMP_TEAMS = {
+  "_links": {
+    "self": {
+      "href": "http://api.football-data.org/v1/competitions/430/teams"
+    },
+    "competition": {
+      "href": "http://api.football-data.org/v1/competitions/430"
+    }
+  },
+  "count": 18,
+  "teams": [
+    {
+      "_links": {
+        "self": {
+          "href": "http://api.football-data.org/v1/teams/5"
+        },
+        "fixtures": {
+          "href": "http://api.football-data.org/v1/teams/5/fixtures"
+        },
+        "players": {
+          "href": "http://api.football-data.org/v1/teams/5/players"
+        }
+      },
+      "name": "FC Bayern München",
+      "code": "FCB",
+      "shortName": "Bayern",
+      "squadMarketValue": "582,225,000 €",
+      "crestUrl": "http://upload.wikimedia.org/wikipedia/commons/c/c5/Logo_FC_Bayern_München.svg"
+    },
+    {
+      "_links": {
+        "self": {
+          "href": "http://api.football-data.org/v1/teams/12"
+        },
+        "fixtures": {
+          "href": "http://api.football-data.org/v1/teams/12/fixtures"
+        },
+        "players": {
+          "href": "http://api.football-data.org/v1/teams/12/players"
+        }
+      },
+      "name": "Werder Bremen",
+      "code": "SVW",
+      "shortName": "Bremen",
+      "squadMarketValue": "67,750,000 €",
+      "crestUrl": "http://upload.wikimedia.org/wikipedia/commons/b/be/SV-Werder-Bremen-Logo.svg"
+    },
+    {
+      "_links": {
+        "self": {
+          "href": "http://api.football-data.org/v1/teams/16"
+        },
+        "fixtures": {
+          "href": "http://api.football-data.org/v1/teams/16/fixtures"
+        },
+        "players": {
+          "href": "http://api.football-data.org/v1/teams/16/players"
+        }
+      },
+      "name": "FC Augsburg",
+      "code": "FCA",
+      "shortName": "Augsburg",
+      "squadMarketValue": "61,200,000 €",
+      "crestUrl": "http://upload.wikimedia.org/wikipedia/de/b/b5/Logo_FC_Augsburg.svg"
+    }]
+    }
+
 TEAM = {
   "_links": {
     "self": {
