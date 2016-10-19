@@ -47,7 +47,7 @@ class TestCompetitionAfterInit(unittest.TestCase):
             else:  # Integers
                 self.assertIsInstance(val, int)
 
-    @patch('pyfootball.models.team.requests.get')
+    @patch('pyfootball.models.competition.requests.get')
     def test_get_fixtures(self, mock_get):
         mock_response = mock_get.return_value
         mock_response.status_code = 200
@@ -58,7 +58,7 @@ class TestCompetitionAfterInit(unittest.TestCase):
         for fixture in fixtures:
             self.assertIsInstance(fixture, Fixture)
 
-    @patch('pyfootball.models.team.requests.get')
+    @patch('pyfootball.models.competition.requests.get')
     def test_get_teams(self, mock_get):
         mock_response = mock_get.return_value
         mock_response.status_code = 200
@@ -69,7 +69,7 @@ class TestCompetitionAfterInit(unittest.TestCase):
         for team in teams:
             self.assertIsInstance(team, Team)
 
-    @patch('pyfootball.models.team.requests.get')
+    @patch('pyfootball.models.competition.requests.get')
     def test_get_league_table(self, mock_get):
         mock_response = mock_get.return_value
         mock_response.status_code = 200
