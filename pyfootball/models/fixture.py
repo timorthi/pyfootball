@@ -17,10 +17,10 @@ class Fixture(object):
         self.status = data['status']
         self.matchday = data['matchday']
         self.home_team = data['homeTeamName']
-        self.home_team_id = self._home_team_ep.split("/")[-1]
+        self.home_team_id = int(self._home_team_ep.split("/")[-1])
         self.away_team = data['awayTeamName']
-        self.away_team_id = self._away_team_ep.split("/")[-1]
-        self.competition_id = self._competition_ep.split("/")[-1]
+        self.away_team_id = int(self._away_team_ep.split("/")[-1])
+        self.competition_id = int(self._competition_ep.split("/")[-1])
 
         if data['result']['goalsHomeTeam'] is not None:
             self.result = {
@@ -38,9 +38,9 @@ class Fixture(object):
 
         if data['odds']:
             self.odds = {
-                'home_win': data['odds']['homeWin'],
-                'draw': data['odds']['draw'],
-                'away_win': data['odds']['awayWin']
+                'home_win': float(data['odds']['homeWin']),
+                'draw': float(data['odds']['draw']),
+                'away_win': float(data['odds']['awayWin'])
             }
         else:
             self.odds = None
