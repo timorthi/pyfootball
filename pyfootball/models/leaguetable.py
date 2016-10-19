@@ -10,7 +10,7 @@ class LeagueTable(object):
         :type data: dict
         """
         self._competition_ep = data['_links']['competition']['href']
-        self.competition_id = self._competition_ep.split('/')[-1]
+        self.competition_id = int(self._competition_ep.split('/')[-1])
         self.competition_name = data['leagueCaption']
         self.current_matchday = data['matchday']
 
@@ -26,7 +26,7 @@ class LeagueTable(object):
             a given position in the table.
             """
             self.position = data['position']
-            self.team_id = data['_links']['team']['href'].split('/')[-1]
+            self.team_id = int(data['_links']['team']['href'].split('/')[-1])
             self.team_name = data['teamName']
             self.crest_url = data['crestURI']
             self.games_played = data['playedGames']
