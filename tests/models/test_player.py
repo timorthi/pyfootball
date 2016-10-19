@@ -33,7 +33,7 @@ class TestPlayerAfterInit(unittest.TestCase):
     def test_data_types(self):
         integers = ['jersey_number']
         dates = ['date_of_birth', 'contract_until']
-        
+
         for attr, val in self.player.__dict__.items():
             if attr in integers:
                 self.assertIsInstance(val, int)
