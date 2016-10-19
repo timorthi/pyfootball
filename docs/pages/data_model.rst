@@ -6,7 +6,7 @@ Each `football-data.org resource <http://api.football-data.org/docs/v1/index.htm
 ::
 
     >>> import pyfootball
-    >>> f = pyfootball.Football('your_api_key')
+    >>> f = pyfootball.Football(api_key='your_api_key')
     >>> my_team = f.get_team(5)
     >>> my_team.name
     FC Bayern München
