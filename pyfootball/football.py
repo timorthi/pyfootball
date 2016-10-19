@@ -27,7 +27,7 @@ class Football(object):
         elif os.getenv('PYFOOTBALL_API_KEY', None):
             key = os.getenv('PYFOOTBALL_API_KEY')
         else:
-            raise ValueError("Couldn't find an API key in the keyword " + 
+            raise ValueError("Couldn't find an API key in the keyword " +
                              "argument api_key nor the environmental " +
                              "variable PYFOOTBALL_API_KEY.")
 
