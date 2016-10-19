@@ -22,7 +22,7 @@ class TestPlayerAfterInit(unittest.TestCase):
     def setUp(self):
         try:
             self.player = Player(resources.PLAYER)
-        except Exception as e:
+        except Exception:
             print("Setting up Player object failed:")
             traceback.print_exc()
             self.skipTest(TestPlayerAfterInit)
@@ -31,13 +31,15 @@ class TestPlayerAfterInit(unittest.TestCase):
         self.player = None
 
     def test_data_types(self):
-        self.assertIsInstance(self.player.name, str)
-        self.assertIsInstance(self.player.position, str)
-        self.assertIsInstance(self.player.jersey_number, int)
-        self.assertIsInstance(self.player.date_of_birth, date)
-        self.assertIsInstance(self.player.nationality, str)
-        self.assertIsInstance(self.player.contract_until, date)
-        self.assertIsInstance(self.player.market_value, str)
+        integers = ['jersey_number']
+        dates = ['date_of_birth', 'contract_until']
+        for attr, val in self.player.__dict__.items():
+            if attr in integers:
+                self.assertIsInstance(val, int)
+            elif attr in dates:
+                self.assertIsInstance(val, date)
+            else:  # Strings
+                self.assertIsInstance(val, str)
 
 if __name__ == '__main__':
     unittest.main()
