@@ -5,6 +5,7 @@ from datetime import date
 from tests import resources
 from pyfootball.models.player import Player
 
+
 class TestPlayer(unittest.TestCase):
     def test_init(self):
         try:
@@ -15,6 +16,7 @@ class TestPlayer(unittest.TestCase):
     def test_init_bad_data(self):
         with self.assertRaises(KeyError):
             Player({"a": "dict", "that": "has", "bad": "data"})
+
 
 class TestPlayerAfterInit(unittest.TestCase):
     def setUp(self):
