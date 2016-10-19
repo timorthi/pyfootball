@@ -16,22 +16,19 @@ class Competition():
         :param data: The competition data from the API's response.
         :type data: dict
         """
-        try:
-            self._teams_ep = data['_links']['teams']['href']
-            self._fixtures_ep = data['_links']['fixtures']['href']
-            self._league_table_ep = data['_links']['leagueTable']['href']
-            self.id = data['id']
-            self.name = data['caption']
-            self.code = data['league']
-            self.year = data['year']
-            self.current_matchday = data['currentMatchday']
-            self.number_of_matchdays = data['numberOfMatchdays']
-            self.number_of_teams = data['numberOfTeams']
-            self.number_of_games = data['numberOfGames']
-            self.last_updated = datetime.strptime(data['lastUpdated'],
-                                                  '%Y-%m-%dT%H:%M:%SZ')
-        except KeyError:
-            traceback.print_exc()
+        self._teams_ep = data['_links']['teams']['href']
+        self._fixtures_ep = data['_links']['fixtures']['href']
+        self._league_table_ep = data['_links']['leagueTable']['href']
+        self.id = data['id']
+        self.name = data['caption']
+        self.code = data['league']
+        self.year = data['year']
+        self.current_matchday = data['currentMatchday']
+        self.number_of_matchdays = data['numberOfMatchdays']
+        self.number_of_teams = data['numberOfTeams']
+        self.number_of_games = data['numberOfGames']
+        self.last_updated = datetime.strptime(data['lastUpdated'],
+                                              '%Y-%m-%dT%H:%M:%SZ')
 
     def get_fixtures(self):
         """Return a list of Fixture objects representing the fixtures in this
