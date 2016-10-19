@@ -22,7 +22,7 @@ class Competition():
         self.id = data['id']
         self.name = data['caption']
         self.code = data['league']
-        self.year = data['year']
+        self.year = int(data['year'])
         self.current_matchday = data['currentMatchday']
         self.number_of_matchdays = data['numberOfMatchdays']
         self.number_of_teams = data['numberOfTeams']
