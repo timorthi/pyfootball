@@ -76,6 +76,68 @@ TEAM = {
   "crestUrl": "http://upload.wikimedia.org/wikipedia/commons/c/c5/Logo_FC_Bayern_München.svg"
 }
 
+FIXTURE = {
+      "_links": {
+        "self": {
+          "href": "http://api.football-data.org/v1/fixtures/152247"
+        },
+        "competition": {
+          "href": "http://api.football-data.org/v1/competitions/430"
+        },
+        "homeTeam": {
+          "href": "http://api.football-data.org/v1/teams/6"
+        },
+        "awayTeam": {
+          "href": "http://api.football-data.org/v1/teams/5"
+        }
+      },
+      "date": "2016-09-09T18:30:00Z",
+      "status": "FINISHED",
+      "matchday": 2,
+      "homeTeamName": "FC Schalke 04",
+      "awayTeamName": "FC Bayern München",
+      "result": {
+        "goalsHomeTeam": 0,
+        "goalsAwayTeam": 2
+      },
+      "odds": None
+    }
+
+FIXTURE_WITH_HT_AND_ODDS = {
+      "_links": {
+        "self": {
+          "href": "http://api.football-data.org/v1/fixtures/149855"
+        },
+        "competition": {
+          "href": "http://api.football-data.org/v1/competitions/424"
+        },
+        "homeTeam": {
+          "href": "http://api.football-data.org/v1/teams/773"
+        },
+        "awayTeam": {
+          "href": "http://api.football-data.org/v1/teams/811"
+        }
+      },
+      "date": "2016-06-10T19:00:00Z",
+      "status": "FINISHED",
+      "matchday": 1,
+      "homeTeamName": "France",
+      "awayTeamName": "Romania",
+      "result": {
+        "goalsHomeTeam": 2,
+        "goalsAwayTeam": 1,
+        "halfTime": {
+          "goalsHomeTeam": 0,
+          "goalsAwayTeam": 0
+        }
+      },
+      "odds": {
+        "homeWin": 56,
+        "draw": 15,
+        "awayWin": 1.03
+      }
+    }
+
 FIXTURES = {
   "_links": {
     "self": {
