@@ -41,7 +41,7 @@ If you encounter any bugs, please let me know by `creating an issue <https://git
 
 Contributing
 ---------------
-Please see the repository's `CONTRIBUTING.rst`.
+Please see the repository's `CONTRIBUTING` file.
 
 License
 ----------
