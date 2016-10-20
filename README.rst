@@ -26,7 +26,7 @@ Example Usage
 ::
 
     >>> import pyfootball
-    >>> f = pyfootball.Football('your_api_key')
+    >>> f = pyfootball.Football(api_key='your_api_key')
     >>> bayern = f.get_team(5)
     >>> bayern.market_value
     582,225,000 €
