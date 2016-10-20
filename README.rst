@@ -4,6 +4,10 @@ pyfootball
     :target: http://pyfootball.readthedocs.io/en/latest/?badge=latest
     :alt: Documentation Status
 
+.. image:: https://travis-ci.org/xozzo/pyfootball.svg?branch=develop
+    :target: https://travis-ci.org/xozzo/pyfootball
+    :alt: Travis CI Status
+
 pyfootball is a client library for `football-data.org <http://api.football-data.org/index>`_ written in Python.
 
 You can familiarize yourself with pyfootball's API with the `documentation <https://pyfootball.readthedocs.io>`_.
