@@ -37,15 +37,12 @@ Example Usage
 
 Support
 ----------
-If you encounter any bugs, please let me know by `creating an issue <https://github.com/xozzo/pyfootball/issues/new>`_ or tweeting at me `@timorthi <https://www.twitter.com/timorthi>`_.
+If you encounter any bugs, please let me know by `creating an issue <https://github.com/xozzo/pyfootball/issues/new>`_ or tweeting at me `@timorthi <https://www.twitter.com/timorthi>`_.  
+
+Contributing
+---------------
+Please see the repository's `CONTRIBUTING.rst`.
 
 License
 ----------
 The project is licensed under the MIT license.
-
-To Do
--------
-
-* Filter support for all resources that have them.
-* Writing unit & integration tests.
-* Testing on various versions of Python.
