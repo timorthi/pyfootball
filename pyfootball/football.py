@@ -13,7 +13,7 @@ from .models.player import Player
 class Football(object):
     def __init__(self, api_key=None):
         """Takes either an api_key as a keyword argument or tries to access
-        an environmental variable PYFOOTBALL_API_KEY, then uses the key to
+        an environmental variable ``PYFOOTBALL_API_KEY``, then uses the key to
         send a test request to make sure that it's valid. The api_key
         kwarg takes precedence over the envvar.
 

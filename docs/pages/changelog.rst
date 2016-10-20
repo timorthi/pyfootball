@@ -1,6 +1,6 @@
 Change Log
 ============
-1.0.1 (2016.10.19)
+1.0.1b (2016.10.19)
 --------------------
 * **[FEATURE]** The ``Football`` object now uses either a kwarg or an envvar ``PYFOOTBALL_API_KEY`` to obtain an API key.
 * **[FIX]** Fixed models not returning expected data types. Namely, numerical types were being returned as strings.  
