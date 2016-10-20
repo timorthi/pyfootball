@@ -9,7 +9,7 @@ else:
 
 setup(
     name='pyfootball',
-    version='1.0.0',
+    version='1.0.1',
     description='A client library for the football-data.org REST API',
     long_description=open(readme_path).read(),
     url='https://github.com/xozzo/pyfootball',
