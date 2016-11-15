@@ -1,5 +1,5 @@
 import requests
-import json
+import os
 
 from . import globals
 from .globals import endpoints
@@ -11,20 +11,32 @@ from .models.player import Player
 
 
 class Football(object):
-    def __init__(self, api_key):
-        """Checks for validity of the API key by sending a test
-        request. If this check fails, an HTTPError exception is raised.
+    def __init__(self, api_key=None):
+        """Takes either an api_key as a keyword argument or tries to access
+        an environmental variable ``PYFOOTBALL_API_KEY``, then uses the key to
+        send a test request to make sure that it's valid. The api_key
+        kwarg takes precedence over the envvar.
 
         Sends one request to api.football-data.org.
 
-        :param api_key: The user's football-data.org API key
+        :keyword api_key: The user's football-data.org API key.
+        :type api_key: string
         """
+        if api_key:
+            key = api_key
+        elif os.getenv('PYFOOTBALL_API_KEY', None):
+            key = os.getenv('PYFOOTBALL_API_KEY')
+        else:
+            raise ValueError("Couldn't find an API key in the keyword " +
+                             "argument api_key nor the environmental " +
+                             "variable PYFOOTBALL_API_KEY.")
+
         endpoint = endpoints['all_competitions']
-        globals.headers = {'X-Auth-Token': api_key}
+        globals.headers = {'X-Auth-Token': key}
         r = requests.get(endpoint, headers=globals.headers)
         globals.update_prev_response(r, endpoint)
         r.raise_for_status()
-        globals.api_key = api_key
+        globals.api_key = key
 
     def get_prev_response(self):
         """Returns information about the most recent response.

@@ -10,7 +10,20 @@ First, you're going to want to create a ``Football`` instance:
 ::
 
     >>> import pyfootball
-    >>> f = pyfootball.Football('your_api_key')
+    >>> f = pyfootball.Football(api_key='your_api_key')
+
+You can also choose to instantiate ``Football`` without any arguments and make
+it use an API key obtained from an environmental variable named
+``PYFOOTBALL_API_KEY``. Here is an example in \*nix:
+::
+
+    $ export PYFOOTBALL_API_KEY='your_api_key'
+
+and then in your program:
+::
+
+    >>> import pyfootball
+    >>> f = pyfootball.Football()
 
 If you provide an invalid API key, an HTTPError exception will be raised. 
 

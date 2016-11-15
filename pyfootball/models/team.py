@@ -14,17 +14,14 @@ class Team(object):
         :param data: The team data from the API's response.
         :type data: dict
         """
-        try:
-            self._fixtures_ep = data['_links']['fixtures']['href']
-            self._players_ep = data['_links']['players']['href']
-            self.id = data['_links']['self']['href'].split("/")[-1]
-            self.name = data['name']
-            self.code = data['code']
-            self.short_name = data['shortName']
-            self.market_value = data['squadMarketValue']
-            self.crest_url = data['crestUrl']
-        except KeyError:
-            traceback.print_exc()
+        self._fixtures_ep = data['_links']['fixtures']['href']
+        self._players_ep = data['_links']['players']['href']
+        self.id = int(data['_links']['self']['href'].split("/")[-1])
+        self.name = data['name']
+        self.code = data['code']
+        self.short_name = data['shortName']
+        self.market_value = data['squadMarketValue']
+        self.crest_url = data['crestUrl']
 
     def get_fixtures(self):
         """Return a list of Fixture objects representing this season's
