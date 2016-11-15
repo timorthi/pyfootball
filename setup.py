@@ -9,7 +9,7 @@ else:
 
 setup(
     name='pyfootball',
-    version='1.0.1b',
+    version='1.0.1',
     description='A client library for the football-data.org REST API',
     long_description=open(readme_path).read(),
     url='https://github.com/xozzo/pyfootball',
@@ -37,9 +37,8 @@ setup(
     # List additional groups of dependencies here (e.g. development
     # dependencies). You can install these using the following syntax,
     # for example:
-    # $ pip install -e .[dev,test]
+    # $ pip install -e .[dev]
     extras_require={
-        'dev': ['sphinx', 'sphinx-autobuild'],
-        'test': ['coverage']
+        'dev': ['sphinx', 'sphinx-autobuild']
     }
 )
