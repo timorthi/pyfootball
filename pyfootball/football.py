@@ -1,6 +1,5 @@
 import requests
 import os
-import collections
 
 from . import globals
 from .globals import endpoints
