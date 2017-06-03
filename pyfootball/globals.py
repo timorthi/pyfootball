@@ -2,18 +2,18 @@ api_key = ""
 headers = {}
 prev_response = {}
 
-_base = 'http://api.football-data.org'
+_base_endpoint = 'http://api.football-data.org/v1'
 endpoints = {
-    'fixture': _base + '/v1/fixtures/{}',
-    'all_fixtures': _base + '/v1/fixtures/',
-    'competition': _base + '/v1/competitions/{}',
-    'all_competitions': _base + '/v1/competitions/',
-    'comp_teams': _base + '/v1/competitions/{}/teams',
-    'comp_fixtures': _base + '/v1/competitions/{}/fixtures',
-    'team': _base + '/v1/teams/{}',
-    'team_players': _base + '/v1/teams/{}/players',
-    'team_fixtures': _base + '/v1/teams/{}/fixtures/',
-    'league_table': _base + '/v1/competitions/{}/leagueTable'
+    'fixture': _base_endpoint + 'fixtures/{}',
+    'all_fixtures': _base_endpoint + 'fixtures/',
+    'competition': _base_endpoint + 'competitions/{}',
+    'all_competitions': _base_endpoint + 'competitions/',
+    'comp_teams': _base_endpoint + 'competitions/{}/teams',
+    'comp_fixtures': _base_endpoint + 'competitions/{}/fixtures',
+    'team': _base_endpoint + 'teams/{}',
+    'team_players': _base_endpoint + 'teams/{}/players',
+    'team_fixtures': _base_endpoint + 'teams/{}/fixtures/',
+    'league_table': _base_endpoint + 'competitions/{}/leagueTable'
 }
 
 
