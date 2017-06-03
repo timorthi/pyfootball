@@ -2,7 +2,7 @@ api_key = ""
 headers = {}
 prev_response = {}
 
-_base_endpoint = 'http://api.football-data.org/v1'
+_base_endpoint = 'http://api.football-data.org/v1/'
 endpoints = {
     'fixture': _base_endpoint + 'fixtures/{}',
     'all_fixtures': _base_endpoint + 'fixtures/',
