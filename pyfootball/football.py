@@ -1,5 +1,6 @@
 import requests
 import os
+import collections
 
 from . import globals
 from .globals import endpoints
@@ -182,23 +183,49 @@ class Football(object):
             fixture_list.append(Fixture(fixture))
         return fixture_list
 
-    def get_team(self, team_id):
+    def get_team(self, team_id=None, team_name=None):
         """Given an ID, returns a Team object for the team associated with
-        the ID.
+        the ID. If no ID is supplied, checks if name is supplied. Database
+        is queried using the team name and the first result in the response
+        is returned. If both ID and name are supplied, ID will be evaluated
+        and name will be ignored.
 
-        Sends one request to api.football-data.org.
+        Sends one request to api.football-data.org if fetching team by ID; two
+        requests if fetching team by name.
 
-        :param team_id: The team ID.
+        :param team_id: The team ID. Default ``None``.
         :type team_id: integer
+        :param team_name: The team name. Default ``None``.
+        :type team_name: string
 
-        :returns: Team: A Team object.
+        :returns: A Team object on success, or ``None`` if no matches are found\
+        for the given team_name or ID.
         """
-        endpoint = endpoints['team'].format(team_id)
-        r = requests.get(endpoint, headers=globals.headers)
-        globals.update_prev_response(r, endpoint)
-        r.raise_for_status()
+        if team_id and isinstance(team_id, int):
+            endpoint = endpoints['team'].format(team_id)
+            r = requests.get(endpoint, headers=globals.headers)
+            globals.update_prev_response(r, endpoint)
+            r.raise_for_status()
+            return Team(r.json())
 
-        return Team(r.json())
+        elif team_name and isinstance(team_name, str):
+            if len(team_name) < 3:
+                raise ValueError("team_name must be at least 3 characters.")
+            name = team_name.replace(" ", "%20")
+            endpoint = endpoints['team'].format('?name='+name)
+            r = requests.get(endpoint, headers=globals.headers)
+            r.raise_for_status()
+            data = r.json()
+            if len(data['teams']) == 0:
+                return None
+            endpoint = endpoints['team'].format(data['teams'][0]['id'])
+            r = requests.get(endpoint, headers=globals.headers)
+            globals.update_prev_response(r, endpoint)
+            r.raise_for_status()
+            return Team(r.json())
+
+        raise ValueError("No valid arguments were supplied to get_team. "\
+                         "Please supply either a team_id:int or team_name:str.")
 
     def get_team_players(self, team_id):
         """Given a team ID, returns a list of Player objects associated
