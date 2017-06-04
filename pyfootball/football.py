@@ -281,7 +281,7 @@ class Football(object):
         :param team_name: The partial or full team name.
         :type team_name: string
 
-        :returns: matches: A dict with team ID as keys and team name as values.\
+        :returns: A dict with team ID as keys and team name as values.\
          ``None`` if no matches are found for the given team_name.
         """
         name = team_name.replace(" ", "%20")
