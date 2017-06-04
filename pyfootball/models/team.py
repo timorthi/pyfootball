@@ -29,7 +29,7 @@ class Team(object):
 
         Sends one request to api.football-data.org.
 
-        :returns: A list of Fixture objects.
+        :returns: A list of :class:`Fixture` objects.
         """
         r = requests.get(self._fixtures_ep, headers=globals.headers)
         globals.update_prev_response(r, self._fixtures_ep)
@@ -47,7 +47,7 @@ class Team(object):
 
         Sends one request to api.football-data.org.
 
-        :returns: A list of Player objects.
+        :returns: A list of :class:`Player` objects.
         """
         r = requests.get(self._players_ep, headers=globals.headers)
         globals.update_prev_response(r, self._players_ep)
