@@ -53,7 +53,7 @@ class Football(object):
         :param comp_id: The competition ID.
         :type comp_id: integer
 
-        :returns: The Competition object.
+        :returns: The :class:`Competition` object.
         """
         endpoint = endpoints['competition'].format(comp_id)
         r = requests.get(endpoint, headers=globals.headers)
@@ -68,7 +68,7 @@ class Football(object):
 
         Sends one request to api.football-data.org.
 
-        :returns: A list of Competition objects.
+        :returns: A list of :class:`Competition` objects.
         """
         endpoint = endpoints['all_competitions']
         r = requests.get(endpoint, headers=globals.headers)
@@ -90,7 +90,7 @@ class Football(object):
         :param comp_id: The competition ID.
         :type comp_id: integer
 
-        :returns: A LeagueTable object.
+        :returns: A :class:`LeagueTable` object.
         """
         endpoint = endpoints['league_table'].format(comp_id)
         r = requests.get(endpoint, headers=globals.headers)
@@ -108,7 +108,7 @@ class Football(object):
         :param comp_id: The competition ID.
         :type comp_id: integer
 
-        :returns: A list of Fixture objects.
+        :returns: A list of :class:`Fixture` objects.
         """
         endpoint = endpoints['comp_fixtures'].format(comp_id)
         r = requests.get(endpoint, headers=globals.headers)
@@ -130,7 +130,7 @@ class Football(object):
         :param comp_id: The competition ID.
         :type comp_id: integer
 
-        :returns: A list of Team objects.
+        :returns: A list of :class:`Team` objects.
         """
         endpoint = endpoints['comp_teams'].format(comp_id)
         r = requests.get(endpoint, headers=globals.headers)
@@ -153,7 +153,7 @@ class Football(object):
         :param fixture_id: The fixture ID.
         :type fixture_id: integer
 
-        :returns: A Fixture object.
+        :returns: A :class:`Fixture` object.
         """
         endpoint = endpoints['fixture'].format(fixture_id)
         r = requests.get(endpoint, headers=globals.headers)
@@ -169,7 +169,7 @@ class Football(object):
 
         Sends one request to api.football-data.org.
 
-        :returns: A list of Fixture objects.
+        :returns: A list of :class:`Fixture` objects.
         """
         endpoint = endpoints['all_fixtures']
         r = requests.get(endpoint, headers=globals.headers)
@@ -197,8 +197,8 @@ class Football(object):
         :param team_name: The team name. Default ``None``.
         :type team_name: string
 
-        :returns: A Team object on success, or ``None`` if no matches are found\
-        for the given team_name or ID.
+        :returns: A :class:`Team` object on success, or ``None`` if no matches \
+        are found for the given team_name or ID.
         """
         if team_id and isinstance(team_id, int):
             endpoint = endpoints['team'].format(team_id)
@@ -235,8 +235,8 @@ class Football(object):
         :param team_id: The team ID.
         :type team_id: integer
 
-        :returns: A list of Player objects based on players in the specified \
-        team.
+        :returns: A list of :class:`Player` objects based on players in the \
+        specified team.
         """
         endpoint = endpoints['team_players'].format(team_id)
         r = requests.get(endpoint, headers=globals.headers)
@@ -258,7 +258,7 @@ class Football(object):
         :param team_id: The team ID.
         :type team_id: integer
 
-        :returns: A list of Fixture objects for the team.
+        :returns: A list of :class:`Fixture` objects for the specified team.
         """
         endpoint = endpoints['team_fixtures'].format(team_id)
         r = requests.get(endpoint, headers=globals.headers)
