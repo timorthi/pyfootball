@@ -41,7 +41,7 @@ class Football(object):
     def get_prev_response(self):
         """Returns information about the most recent response.
 
-        :returns: prev_response: Information about the most recent response.
+        :returns: A dict containing information about the most recent response.
         """
         return globals.prev_response
 
@@ -53,7 +53,7 @@ class Football(object):
         :param comp_id: The competition ID.
         :type comp_id: integer
 
-        :returns: Competition: The Competition object.
+        :returns: The Competition object.
         """
         endpoint = endpoints['competition'].format(comp_id)
         r = requests.get(endpoint, headers=globals.headers)
@@ -68,7 +68,7 @@ class Football(object):
 
         Sends one request to api.football-data.org.
 
-        :returns: comp_list: List of Competition objects.
+        :returns: A list of Competition objects.
         """
         endpoint = endpoints['all_competitions']
         r = requests.get(endpoint, headers=globals.headers)
@@ -90,7 +90,7 @@ class Football(object):
         :param comp_id: The competition ID.
         :type comp_id: integer
 
-        :returns: LeagueTable: A LeagueTable object.
+        :returns: A LeagueTable object.
         """
         endpoint = endpoints['league_table'].format(comp_id)
         r = requests.get(endpoint, headers=globals.headers)
@@ -108,7 +108,7 @@ class Football(object):
         :param comp_id: The competition ID.
         :type comp_id: integer
 
-        :returns: fixture_list: A list of Fixture objects.
+        :returns: A list of Fixture objects.
         """
         endpoint = endpoints['comp_fixtures'].format(comp_id)
         r = requests.get(endpoint, headers=globals.headers)
@@ -130,7 +130,7 @@ class Football(object):
         :param comp_id: The competition ID.
         :type comp_id: integer
 
-        :returns: team_list: A list of Team objects.
+        :returns: A list of Team objects.
         """
         endpoint = endpoints['comp_teams'].format(comp_id)
         r = requests.get(endpoint, headers=globals.headers)
@@ -153,7 +153,7 @@ class Football(object):
         :param fixture_id: The fixture ID.
         :type fixture_id: integer
 
-        :returns: Fixture: A Fixture object.
+        :returns: A Fixture object.
         """
         endpoint = endpoints['fixture'].format(fixture_id)
         r = requests.get(endpoint, headers=globals.headers)
@@ -169,7 +169,7 @@ class Football(object):
 
         Sends one request to api.football-data.org.
 
-        :returns: fixture_list: A list of Fixture objects.
+        :returns: A list of Fixture objects.
         """
         endpoint = endpoints['all_fixtures']
         r = requests.get(endpoint, headers=globals.headers)
@@ -235,7 +235,8 @@ class Football(object):
         :param team_id: The team ID.
         :type team_id: integer
 
-        :returns: player_list: A list of Player objects in the specified team.
+        :returns: A list of Player objects based on players in the specified \
+        team.
         """
         endpoint = endpoints['team_players'].format(team_id)
         r = requests.get(endpoint, headers=globals.headers)
@@ -257,7 +258,7 @@ class Football(object):
         :param team_id: The team ID.
         :type team_id: integer
 
-        :returns: fixture_list: A list of Fixture objects for the team.
+        :returns: A list of Fixture objects for the team.
         """
         endpoint = endpoints['team_fixtures'].format(team_id)
         r = requests.get(endpoint, headers=globals.headers)
@@ -280,8 +281,8 @@ class Football(object):
         :param team_name: The partial or full team name.
         :type team_name: string
 
-        :returns: matches: A dict with team ID as keys and team name as values.
-        :returns: ``None``: If no matches are found for the given team_name.
+        :returns: matches: A dict with team ID as keys and team name as values.\
+         ``None`` if no matches are found for the given team_name.
         """
         name = team_name.replace(" ", "%20")
         endpoint = endpoints['team'].format('?name='+name)
