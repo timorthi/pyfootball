@@ -36,7 +36,7 @@ class Competition():
 
         Sends one request to api.football-data.org.
 
-        :returns: A list of Fixture objects.
+        :returns: A list of :class:`Fixture` objects.
         """
         r = requests.get(self._fixtures_ep, headers=globals.headers)
         globals.update_prev_response(r, self._fixtures_ep)
@@ -54,7 +54,7 @@ class Competition():
 
         Sends one request to api.football-data.org.
 
-        :returns: A list of Team objects.
+        :returns: A list of :class:`Team` objects.
         """
         r = requests.get(self._teams_ep, headers=globals.headers)
         globals.update_prev_response(r, self._teams_ep)
@@ -71,7 +71,7 @@ class Competition():
 
         Sends one request to api.football-data.org.
 
-        :returns: A LeagueTable object.
+        :returns: A :class:`LeagueTable` object.
         """
         r = requests.get(self._league_table_ep, headers=globals.headers)
         globals.update_prev_response(r, self._league_table_ep)
