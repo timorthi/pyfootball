@@ -197,8 +197,8 @@ class Football(object):
         :param team_name: The team name. Default ``None``.
         :type team_name: string
 
-        :returns: A :class:`Team` object on success, or ``None`` if no matches \
-        are found for the given team_name or ID.
+        :returns: A :class:`Team` object on success, or ``None`` if no
+        matches are found for the given team_name or ID.
         """
         if team_id and isinstance(team_id, int):
             endpoint = endpoints['team'].format(team_id)
@@ -223,8 +223,9 @@ class Football(object):
             r.raise_for_status()
             return Team(r.json())
 
-        raise ValueError("No valid arguments were supplied to get_team. "\
-                         "Please supply either a team_id:int or team_name:str.")
+        raise ValueError("No valid arguments were supplied to get_team. "
+                         "Please supply either a team_id:int or team_name\
+                         :str.")
 
     def get_team_players(self, team_id):
         """Given a team ID, returns a list of Player objects associated
