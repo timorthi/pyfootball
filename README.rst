@@ -8,14 +8,14 @@ pyfootball
     :target: https://travis-ci.org/xozzo/pyfootball
     :alt: Travis CI Status
 
-pyfootball is a client library for `football-data.org <http://api.football-data.org/index>`_ written in Python.
+pyfootball is a client library for `football-data.org <https://www.football-data.org/>`_ written in Python.
 
 You can familiarize yourself with pyfootball's API with the `documentation <https://pyfootball.readthedocs.io>`_.
 
 Requirements
 ---------------
 
-* A valid API key for football-data. You can request for one at `<http://api.football-data.org/register>`_.
+* A valid API key for football-data. You can request for one at `<https://www.football-data.org/client/register>`_.
 * Python 3.5+
 * The ``requests`` library. pip should handle this for you when installing pyfootball.
 
@@ -46,3 +46,6 @@ Please see the repository's `CONTRIBUTING` file.
 License
 ----------
 The project is licensed under the MIT license.
+
+.. note::
+   The legacy ``api.football-data.org/v1/`` endpoints wrapped by ``pyfootball`` have been retired (returning HTTP 410 Gone). For an active, keyless JSON REST API covering 93 football leagues (standings, fixtures, historical results, and Dixon-Coles match probabilities), see `Football Charts API <https://www.football-charts.com/developers>`_.

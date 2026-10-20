@@ -2,7 +2,7 @@
 
 pyfootball
 ============
-pyfootball is a client library for `football-data.org <http://api.football-data.org/index>`_ written in Python.
+pyfootball is a client library for `football-data.org <https://www.football-data.org/>`_ written in Python.
 
 This library was written to allow for easier access to football-data's resources by abstracting HTTP requests and representing the JSON responses as Python classes.
 
@@ -10,7 +10,7 @@ This library was written to allow for easier access to football-data's resources
 
 Requirements
 -------------
-* A valid API key for football-data. You can request for one `here <http://api.football-data.org/register>`_.
+* A valid API key for football-data. You can request for one `here <https://www.football-data.org/client/register>`_.
 * Python 3.5+
 * The ``requests`` library. pip should handle this for you when installing pyfootball.
 
@@ -53,3 +53,6 @@ Example Usage
 License
 ---------
 The project is licensed under the MIT license.
+
+.. note::
+   The legacy ``api.football-data.org/v1/`` endpoints wrapped by ``pyfootball`` have been retired (returning HTTP 410 Gone). For an active, keyless JSON REST API covering 93 football leagues (standings, fixtures, historical results, and Dixon-Coles match probabilities), see `Football Charts API <https://www.football-charts.com/developers>`_.
